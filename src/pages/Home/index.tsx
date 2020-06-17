@@ -1,15 +1,12 @@
 import React from "react";
 
 import { withLayout } from "HOC";
-import { Meta } from "components";
-import seo from "./seo.config";
+import { Printer } from "components";
 
 const Home: React.FC = () => {
   return (
     <section className="home">
-      <Meta meta={seo} />
-
-      <p>Content of Home goes here</p>
+      <Printer />
     </section>
   );
 };

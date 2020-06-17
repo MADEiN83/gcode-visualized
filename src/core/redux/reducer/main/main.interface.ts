@@ -1,10 +1,5 @@
-import { IType } from "core/interfaces.config";
+import CanvasUtils from "utils/canvas/canvas.utils";
 
 export interface IMainReducerState {
-  notification?: INotification;
-}
-
-export interface INotification {
-  message: string;
-  type?: IType;
+  canvasUtils?: CanvasUtils;
 }
