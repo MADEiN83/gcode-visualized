@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "kisstkondoros.vscode-codemetrics",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}

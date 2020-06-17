@@ -1,0 +1,38 @@
+$time: 0.3s;
+
+.notification {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 50px;
+
+  @include flex(row, center, center);
+  @extend %center;
+
+  color: $color-white;
+
+  &[data-type="danger"] {
+    background-color: $color-danger;
+  }
+
+  &[data-type="primary"] {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  &[data-type="secondary"] {
+    background-color: $color-secondary;
+  }
+
+  &[data-visible="true"] {
+    animation: scale-in $time ease-in-out forwards;
+  }
+
+  &[data-visible="false"] {
+    animation: scale-out $time ease-in-out forwards;
+  }
+
+  &--icon {
+    margin-right: 10px;
+  }
+}

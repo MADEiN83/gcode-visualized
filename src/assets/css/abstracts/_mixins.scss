@@ -1,0 +1,56 @@
+@mixin flex(
+  $flex-direction: row,
+  $justify-content: flex-start,
+  $align-items: flex-start
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin xs {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+%flex-1 {
+  flex: 1;
+}
+
+%center {
+  text-align: center;
+}
+
+%pointer {
+  cursor: pointer;
+}
+
+%full-height {
+  height: 100%;
+}

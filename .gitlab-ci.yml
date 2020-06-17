@@ -1,0 +1,57 @@
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - test
+  # - build_docker
+  # - deploy_production
+
+test:
+  image: node:latest
+  stage: test
+  before_script:
+    - npm i
+  script:
+    - npm run test
+
+build_production:
+  image: node:latest
+  stage: test
+  before_script:
+    - npm i
+  script:
+    - rm -rf build/
+    - npm run build
+  cache:
+    paths:
+      - build
+  only:
+    - master
+# build_docker:
+#   image: docker:stable
+#   services:
+#     - docker:dind
+#   stage: build_docker
+#   before_script:
+#     - docker login ${CI_REGISTRY} -u gitlab-ci-token -p "skymqJKt2fvEJsbBPr-m"
+#   script:
+#     - docker build -t registry.gitlab.com/madein83/docker-registry/easy-text .
+#     - docker push registry.gitlab.com/madein83/docker-registry/easy-text
+#   after_script:
+#     - docker logout ${CI_REGISTRY}
+#   cache:
+#     paths:
+#       - build
+#     policy: pull
+#   only:
+#     - master
+
+# deploy_production:
+#   image: docker:stable
+#   services:
+#     - docker:dind
+#   stage: deploy_production
+#   only:
+#     - master
+#   script: echo "coucou je deploie en prod"

@@ -1,0 +1,21 @@
+.loading-container {
+  &.loading-center {
+    text-align: center;
+  }
+
+  &.loading-right {
+    text-align: right;
+  }
+
+  &.loading-sm {
+    font-size: 10px;
+  }
+
+  &.loading-md {
+    font-size: 16px;
+  }
+
+  &.loading-lg {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,33 @@
+$default-font-size: 1.6rem;
+
+/*
+ * Colors.
+ */
+$color-primary: #007bff;
+$color-primary-dark: darken($color-primary, 25%);
+$color-secondary: #28a745;
+$color-secondary-dark: darken($color-secondary, 25%);
+$color-danger: #dc3545;
+$color-white: #fff;
+$color-black: #000;
+$color-grey-light: #e8e8e8;
+$color-disabled: lighten($color-black, $amount: 60);
+$color-text: #000;
+$color-background: $color-white;
+
+/*
+ * Responsive Breakpoints.
+ */
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1600px;
+
+$modal-width-mobile: 90vw;
+$modal-width-desktop-sm: 400px;
+$modal-width-desktop-md: 600px;
+$modal-width-desktop-lg: 800px;
+$modal-top: 20vh;
+$modal-max-height: 200px;

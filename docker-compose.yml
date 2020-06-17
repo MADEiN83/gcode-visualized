@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  front:
+    image: registry.gitlab.com/madein83/docker-registry/front-demo:latest
+    build: ./
+    restart: always
+    ports:
+      - 5000:5000
+  storybook:
+    image: registry.gitlab.com/madein83/docker-registry/storybook-demo:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile.storybook
+    restart: always
+    ports:
+      - 8086:80

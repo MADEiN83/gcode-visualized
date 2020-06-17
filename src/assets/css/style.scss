@@ -1,0 +1,22 @@
+@import "./abstracts/functions";
+@import "./abstracts/mixins";
+@import "./abstracts/variables";
+
+@import "./base/base";
+@import "./base/animations";
+@import "./base/typography";
+@import "./base/utilities";
+
+@import "./layout/container";
+@import "./layout/section";
+@import "./layout/form";
+
+// Components
+@import "components/Button/style.scss";
+@import "components/Loading/style.scss";
+@import "components/Notification/style.scss";
+@import "components/Header/style.scss";
+@import "components/Footer/style.scss";
+
+// Pages
+@import "pages/Home/style.scss";

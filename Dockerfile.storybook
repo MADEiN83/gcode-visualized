@@ -1,0 +1,2 @@
+FROM nginx:alpine
+COPY ./buildstorybook /usr/share/nginx/html
