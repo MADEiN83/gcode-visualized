@@ -21,6 +21,7 @@ const rules = [
   {
     regexp: /^G0[ XYZ\d]+/,
     action: (gcode: string): IActionDefinition[] => {
+      // eslint-disable-next-line
       const [_, ...axes] = gcode.split(" ");
       return axes.map((axe) => {
         return {
