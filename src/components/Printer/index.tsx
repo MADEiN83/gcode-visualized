@@ -12,6 +12,8 @@ const Printer: React.FC<IProps> = (props: IProps) => {
     if (!utils) {
       return;
     }
+
+    utils.run(["G0 Y110 X110", "G28"]);
   }, [utils]);
 
   return (
