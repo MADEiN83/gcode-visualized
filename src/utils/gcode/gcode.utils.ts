@@ -2,6 +2,7 @@ import {
   Actions,
   IActionDefinition,
   ObjectTypes,
+  AxeTypes,
 } from "utils/canvas/canvas.interfaces";
 
 export const parseGCode = (gcode: string): IActionDefinition[] => {
@@ -20,17 +21,59 @@ export const parseGCode = (gcode: string): IActionDefinition[] => {
 const rules = [
   {
     regexp: /^G0[ XYZ\d]+/,
+    label: "Move to",
     action: (gcode: string): IActionDefinition[] => {
       // eslint-disable-next-line
       const [_, ...axes] = gcode.split(" ");
-      return axes.map((axe) => {
+      return axes.map((anAxe) => {
+        const axe = anAxe[0].toLowerCase();
+        const target = axe === "y" ? ObjectTypes.Bed : ObjectTypes.Nozzle;
         return {
-          target: ObjectTypes.Nozzle,
+          target,
           action: Actions.MoveTo,
-          axe: axe[0].toLowerCase(),
-          valueToReach: Number(axe.substr(1, axe.length - 1)),
+          axe,
+          valueToReach: Number(anAxe.substr(1, anAxe.length - 1)),
         } as IActionDefinition;
       });
+    },
+  },
+  {
+    regexp: /^M140 S\d+/,
+    label: "Set Bed temperature",
+    action: (gcode: string): IActionDefinition[] => {
+      return [
+        {
+          target: ObjectTypes.Bed,
+          action: Actions.SetTemperatureBed,
+          valueToReach: Number(gcode.split(" S")[1]),
+        },
+      ];
+    },
+  },
+  {
+    regexp: /^M104 S\d+/,
+    label: "Set Nozzle temperature",
+    action: (gcode: string): IActionDefinition[] => {
+      return [
+        {
+          target: ObjectTypes.Nozzle,
+          action: Actions.SetTemperatureBed,
+          valueToReach: Number(gcode.split(" S")[1]),
+        },
+      ];
+    },
+  },
+  {
+    regexp: /^G28/,
+    label: "Homing",
+    action: (): IActionDefinition[] => {
+      const axes: AxeTypes[] = ["x", "y", "z"];
+      return axes.map((axe) => ({
+        target: axe === "y" ? ObjectTypes.Bed : ObjectTypes.Nozzle,
+        action: Actions.MoveTo,
+        valueToReach: 0,
+        axe,
+      }));
     },
   },
 ];

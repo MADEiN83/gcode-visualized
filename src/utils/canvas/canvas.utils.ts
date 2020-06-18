@@ -22,23 +22,22 @@ class CanvasUtils {
     this.nozzle = new NozzleUtils(this);
 
     this.init();
+    this.draw();
   }
 
   private init = async () => {
     this.canvas.width = this.size.width;
     this.canvas.height = this.size.height;
-
-    this.run(["G0 X30 Y30", "G0 X200 Y30", "G0 X200 Y200"]);
   };
 
-  proceed = () => {
+  draw = () => {
     this.bed.draw();
     this.nozzle.draw();
   };
 
   refresh = () => {
     this.ctx.clearRect(0, 0, this.size.width, this.size.height);
-    this.proceed();
+    this.draw();
   };
 
   run = async (gcodes: string[]) => {

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import Canvas from "./components/Canvas";
 import useCanvasUtils from "hooks/useCanvasUtils";
 
@@ -12,8 +13,9 @@ const Printer: React.FC<IProps> = (props: IProps) => {
       return;
     }
 
-    utils.proceed();
+    utils.run(["M140 S60", "G0 X30 Y30", "G0 X200 Y30", "G0 X200 Y200"]);
   }, [utils]);
+
   return (
     <>
       <Canvas />

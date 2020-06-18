@@ -3,16 +3,17 @@ export interface IPosition {
   y: number;
 }
 
-export type AxeTypes = "x" | "y";
+export type AxeTypes = "x" | "y" | "z";
 
 export enum Actions {
   MoveTo = "moveTo",
+  SetTemperatureBed = "setTemperatureBed",
 }
 
 export interface IActionDefinition {
   target: ObjectTypes;
   action: Actions;
-  axe: AxeTypes;
+  axe?: AxeTypes;
   valueToReach: number;
 }
 
