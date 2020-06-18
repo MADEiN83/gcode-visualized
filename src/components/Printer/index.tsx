@@ -13,7 +13,8 @@ const Printer: React.FC<IProps> = (props: IProps) => {
       return;
     }
 
-    utils.run(["M140 S60", "G0 X30 Y30", "G0 X200 Y30", "G0 X200 Y200"]);
+    // utils.run(["M140 S60", "G0 X30 Y30", "G0 X200 Y30", "G0 X200 Y200"]);
+    utils.run(["G0 X0"]);
   }, [utils]);
 
   return (

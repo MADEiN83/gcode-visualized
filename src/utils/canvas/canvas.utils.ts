@@ -4,7 +4,7 @@ import { parseGCode } from "utils/gcode/gcode.utils";
 import { IActionDefinition, ObjectTypes } from "./canvas.interfaces";
 
 class CanvasUtils {
-  private size = { width: 220, height: 220 };
+  private size = { width: 300, height: 300 };
   private canvas: HTMLCanvasElement;
   args?: ICanvasArgs;
   ctx: CanvasRenderingContext2D;
@@ -42,6 +42,7 @@ class CanvasUtils {
 
   run = async (gcodes: string[]) => {
     const arrayOfActions: IActionDefinition[][] = gcodes.map(parseGCode);
+    console.log("firstAction", arrayOfActions);
 
     for await (const firstAction of arrayOfActions) {
       await this.dispatchActions(firstAction);

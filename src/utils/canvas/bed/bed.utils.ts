@@ -1,10 +1,11 @@
 import CanvasUtils from "../canvas.utils";
-import { IPosition } from "../canvas.interfaces";
+import { IPosition, AxeTypes } from "../canvas.interfaces";
+import { incrementMovement } from "utils/movement/movement.utils";
 
 const DEFAULT_ARGS: IBedArgs = {
   size: { width: 220, height: 220 },
   fillStyle: "lightgrey",
-  position: { x: 0, y: 0 },
+  position: { x: 0, y: 0, z: 0 },
 };
 
 class BedUtils {
@@ -19,6 +20,25 @@ class BedUtils {
   draw = () => {
     this.setFillStyle();
     this.setFillRect();
+  };
+
+  moveTo = (valueToReach: number): Promise<void> => {
+    const axe: AxeTypes = "y";
+    return new Promise((resolve) => {
+      incrementMovement({
+        value: this.args.position[axe] || 0,
+        valueToReach: valueToReach,
+        callback: this.handleOnMove(axe),
+        onCompleted: resolve,
+      });
+    });
+  };
+
+  private handleOnMove = (axe: AxeTypes) => {
+    return (newAxeValue: number) => {
+      this.args.position[axe] = newAxeValue;
+      this.parent.refresh();
+    };
   };
 
   private setFillStyle = () => {
@@ -51,5 +71,5 @@ export default BedUtils;
 export interface IBedArgs {
   size?: { width: number; height: number };
   fillStyle?: string;
-  position?: IPosition;
+  position: IPosition;
 }

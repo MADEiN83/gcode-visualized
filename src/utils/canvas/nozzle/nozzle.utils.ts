@@ -5,7 +5,7 @@ import { incrementMovement } from "utils/movement/movement.utils";
 const DEFAULT_ARGS: INozzleArgs = {
   radius: 10,
   fillStyle: "red",
-  position: { x: 100, y: 100 },
+  position: { x: 0, y: 0, z: 0 },
 };
 
 class NozzleUtils {
@@ -24,7 +24,7 @@ class NozzleUtils {
   moveTo = (valueToReach: number, axe: AxeTypes): Promise<void> => {
     return new Promise((resolve) => {
       incrementMovement({
-        value: this.args.position[axe],
+        value: this.args.position[axe] || 0,
         valueToReach: valueToReach,
         callback: this.handleOnMove(axe),
         onCompleted: resolve,
@@ -50,7 +50,7 @@ class NozzleUtils {
     }
 
     ctx.beginPath();
-    ctx.arc(position.x, position.y, radius, 0, 2 * Math.PI, false);
+    ctx.arc(position.x, position.z, radius, 0, 2 * Math.PI, false);
     if (fillStyle) {
       ctx.fillStyle = fillStyle;
     }
