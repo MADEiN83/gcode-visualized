@@ -1,7 +1,7 @@
 import { IMainReducerState } from "./main.interface";
 
 export const SET_CANVAS_UTILS = "SET_CANVAS_UTILS";
-const initialState: IMainReducerState = { canvasUtils: undefined };
+const initialState: IMainReducerState = { canvasManager: undefined };
 
 const mainReducer = (
   state: IMainReducerState = initialState,
@@ -11,7 +11,7 @@ const mainReducer = (
     case SET_CANVAS_UTILS:
       return {
         ...state,
-        canvasUtils: action.payload,
+        canvasManager: action.payload,
       };
     default:
       return state;

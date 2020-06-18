@@ -1,3 +1,3 @@
-import useContext from "./useCanvasUtils";
+import useCanvasManager from "./useCanvasManager";
 
-export { useContext };
+export { useCanvasManager };

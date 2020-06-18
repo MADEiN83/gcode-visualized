@@ -1,5 +1,5 @@
-import CanvasUtils from "utils/canvas/canvas.utils";
+import CanvasManager from "utils/canvas/manager/canvas.manager";
 
 export interface IMainReducerState {
-  canvasUtils?: CanvasUtils;
+  canvasManager?: CanvasManager;
 }

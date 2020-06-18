@@ -9,7 +9,7 @@ describe("Movement tests", () => {
     await incrementMovement({
       value: 0,
       valueToReach: 50,
-      callback: (v) => {
+      onChange: (v) => {
         expect(v).toBe(i++);
         callback();
       },
@@ -30,7 +30,7 @@ describe("Movement tests", () => {
     await incrementMovement({
       value,
       valueToReach: 0,
-      callback: (v) => {
+      onChange: (v) => {
         expect(v).toBe(value - i++);
         callback();
       },

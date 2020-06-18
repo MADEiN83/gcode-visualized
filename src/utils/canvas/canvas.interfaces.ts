@@ -3,6 +3,10 @@ export interface IPosition {
   y: number;
   z: number;
 }
+export interface ISize {
+  width: number;
+  height: number;
+}
 
 export type AxeTypes = "x" | "y" | "z";
 
